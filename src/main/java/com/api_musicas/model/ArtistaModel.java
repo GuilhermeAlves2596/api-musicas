@@ -1,7 +1,9 @@
 package com.api_musicas.model;
 
+import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
+import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotBlank;
@@ -10,6 +12,8 @@ import javax.validation.constraints.NotBlank;
 @Data
 @Builder
 @Table(name = "artista")
+@AllArgsConstructor
+@NoArgsConstructor
 public class ArtistaModel {
 
     @Id
@@ -25,7 +29,7 @@ public class ArtistaModel {
     @NotBlank
     private String site;
 
-    @NotBlank
+    @Column(name = "imagemperfil")
     private String imagemPerfil;
 
 }
