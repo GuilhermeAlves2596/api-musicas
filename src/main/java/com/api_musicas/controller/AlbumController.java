@@ -1,7 +1,10 @@
 package com.api_musicas.controller;
 
+import com.api_musicas.domain.AlbumDTO;
 import com.api_musicas.domain.ArtistaDTO;
+import com.api_musicas.model.AlbumModel;
 import com.api_musicas.model.ArtistaModel;
+import com.api_musicas.service.AlbumService;
 import com.api_musicas.service.ArtistaService;
 import lombok.Data;
 import org.springframework.data.domain.Page;
@@ -16,36 +19,34 @@ import org.springframework.web.multipart.MultipartFile;
 import javax.validation.Valid;
 import java.io.IOException;
 
-import static com.api_musicas.util.Constantes.*;
-
 @RestController
-@RequestMapping("/artista")
+@RequestMapping("/album")
 @Data
-public class ArtistaController {
+public class AlbumController {
 
-    private final ArtistaService service;
+    private final AlbumService service;
 
     @PostMapping(value = "/salvar")
-    public ResponseEntity<String> salvarArtista(@RequestBody @Valid ArtistaDTO artistaDTO)  {
+    public ResponseEntity<String> salvarAlbum(@RequestBody @Valid AlbumDTO albumDTO)  {
 
-        return ResponseEntity.ok(service.save(artistaDTO));
+        return ResponseEntity.ok(service.save(albumDTO));
     }
 
     @PostMapping(value = "/salvar/{id}/imagem", consumes = MediaType.MULTIPART_FORM_DATA_VALUE)
-    public ResponseEntity<String> salvarImagemArtista(@PathVariable Long id, @RequestPart("imagem") MultipartFile imagem) throws IOException {
+    public ResponseEntity<String> salvarImagemAlbum(@PathVariable Long id, @RequestPart("imagem") MultipartFile imagem) throws IOException {
 
         return ResponseEntity.ok(service.saveImagem(id, imagem));
     }
 
     @GetMapping("/{id}")
-    public ResponseEntity<ArtistaModel> getArtista(@PathVariable Long id) {
+    public ResponseEntity<AlbumModel> getAlbum(@PathVariable Long id) {
 
-        return ResponseEntity.ok(service.buscarArtista(id));
+        return ResponseEntity.ok(service.buscarAlbum(id));
 
     }
 
     @GetMapping
-    public ResponseEntity<Page<ArtistaModel>> artistas(
+    public ResponseEntity<Page<AlbumModel>> albuns(
             @RequestParam(defaultValue = "0") int page,
             @RequestParam(defaultValue = "5") int size,
             @RequestParam(defaultValue = "id") String sort,
@@ -54,11 +55,11 @@ public class ArtistaController {
         Sort sortOrder = Sort.by(Sort.Direction.fromString(direction), sort);
         Pageable pageable = PageRequest.of(page, size, sortOrder);
 
-        return ResponseEntity.ok(service.artistas(pageable));
+        return ResponseEntity.ok(service.albuns(pageable));
     }
 
     @PutMapping("/atualizar/{id}")
-    public ResponseEntity<String> update(@PathVariable Long id, @Valid @RequestBody ArtistaDTO dto){
+    public ResponseEntity<String> update(@PathVariable Long id, @Valid @RequestBody AlbumDTO dto){
 
         return ResponseEntity.ok(service.update(id, dto));
 

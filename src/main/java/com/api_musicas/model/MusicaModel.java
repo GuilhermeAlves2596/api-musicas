@@ -1,7 +1,9 @@
 package com.api_musicas.model;
 
+import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
+import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
 import javax.validation.constraints.Max;
@@ -13,6 +15,8 @@ import javax.validation.constraints.Positive;
 @Data
 @Builder
 @Table(name = "musica")
+@AllArgsConstructor
+@NoArgsConstructor
 public class MusicaModel {
 
     @Id
