@@ -1,6 +1,7 @@
-package com.api_musicas.domain;
+package com.api_musicas.domain.dto;
 
 import com.api_musicas.model.ArtistaModel;
+import com.fasterxml.jackson.annotation.JsonInclude;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -13,6 +14,7 @@ import javax.validation.constraints.NotNull;
 @AllArgsConstructor
 @NoArgsConstructor
 @Builder
+@JsonInclude(JsonInclude.Include.NON_NULL)
 public class AlbumDTO {
 
     @NotBlank(message = "Titulo não pode ser vazio.")

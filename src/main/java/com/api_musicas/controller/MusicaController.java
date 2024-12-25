@@ -1,5 +1,7 @@
 package com.api_musicas.controller;
 
+import com.api_musicas.domain.dto.AlbumMusicasDTO;
+import com.api_musicas.domain.dto.MusicasArtistaDTO;
 import com.api_musicas.model.MusicaModel;
 import com.api_musicas.service.MusicaService;
 import lombok.Data;
@@ -57,6 +59,18 @@ public class MusicaController {
 
         return ResponseEntity.ok(service.delete(id));
 
+    }
+
+    @GetMapping("/artista/{artistaId}")
+    public ResponseEntity<MusicasArtistaDTO> getMusicasByArtista(@PathVariable Long artistaId) {
+        MusicasArtistaDTO dto = service.musicasPorArtista(artistaId);
+        return ResponseEntity.ok(dto);
+    }
+
+    @GetMapping("/album/{albumId}")
+    public ResponseEntity<AlbumMusicasDTO> listarMusicasPorAlbum(@PathVariable Long albumId) {
+        AlbumMusicasDTO albumMusicasDTO = service.listarMusicasPorAlbum(albumId);
+        return ResponseEntity.ok(albumMusicasDTO);
     }
 
 }

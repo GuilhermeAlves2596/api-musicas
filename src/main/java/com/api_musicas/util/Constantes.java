@@ -17,12 +17,14 @@ public class Constantes {
     public static String ALBUM_ATUALIZADO = "Album atualizado com sucesso.";
     public static String ALBUM_DELETADO = "Album excluido com sucesso.";
     public static String ALBUM_N_ENCONTRADO = "Album não encontrado";
+    public static String ERRO_ALBUM_DELETADO = "Erro: O album possui musicas cadastradas.";
 
     //Musica
     public static String MUSICA_CADASTRADA = "Musica cadastrada com sucesso.";
-    public static String ERRO_MUSICA_CADASTRADO = "Erro: Campo ano não pode ser superior ao ano atual.";
+    public static String ERRO_MUSICA_CADASTRADA = "Já existe uma música com esse número de faixa no álbum.";
     public static String MUSICA_ATUALIZADA = "Musica atualizada com sucesso.";
     public static String MUSICA_DELETADA = "Musica excluida com sucesso.";
     public static String MUSICA_N_ENCONTRADA = "Musica não encontrada";
+    public static String MUSICA_ARTISTA_N_ENCONTRADA = "Nenhuma música encontrada para o artista com ID: ";
 
 }

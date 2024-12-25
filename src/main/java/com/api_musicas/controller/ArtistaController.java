@@ -1,6 +1,6 @@
 package com.api_musicas.controller;
 
-import com.api_musicas.domain.ArtistaDTO;
+import com.api_musicas.domain.dto.ArtistaDTO;
 import com.api_musicas.model.ArtistaModel;
 import com.api_musicas.service.ArtistaService;
 import lombok.Data;
@@ -15,8 +15,6 @@ import org.springframework.web.multipart.MultipartFile;
 
 import javax.validation.Valid;
 import java.io.IOException;
-
-import static com.api_musicas.util.Constantes.*;
 
 @RestController
 @RequestMapping("/artista")

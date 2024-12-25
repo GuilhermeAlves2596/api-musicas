@@ -1,14 +1,11 @@
 package com.api_musicas.service;
 
-import com.api_musicas.domain.AlbumDTO;
-import com.api_musicas.domain.ArtistaDTO;
+import com.api_musicas.domain.dto.AlbumDTO;
 import com.api_musicas.mapper.AlbumMapper;
-import com.api_musicas.mapper.ArtistaMapper;
 import com.api_musicas.model.AlbumModel;
-import com.api_musicas.model.ArtistaModel;
+import com.api_musicas.model.MusicaModel;
 import com.api_musicas.repository.AlbumRepository;
-import com.api_musicas.repository.ArtistaRepository;
-import lombok.Data;
+import com.api_musicas.repository.MusicaRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
@@ -17,7 +14,7 @@ import org.springframework.web.multipart.MultipartFile;
 
 import java.io.IOException;
 import java.time.LocalDate;
-import java.util.Date;
+import java.util.List;
 
 import static com.api_musicas.util.Constantes.*;
 
@@ -28,6 +25,8 @@ public class AlbumService {
     private AlbumMapper mapper;
     @Autowired
     private AlbumRepository repository;
+    @Autowired
+    private MusicaRepository musicaRepository;
     @Autowired
     private ImagemService imagemService;
 
@@ -87,9 +86,15 @@ public class AlbumService {
         AlbumModel model = repository.findById(id)
                 .orElseThrow(() -> new RuntimeException(ALBUM_N_ENCONTRADO));
 
-        repository.delete(model);
+        List<MusicaModel> musicaModel = musicaRepository.findByAlbumId(id);
 
-        return ALBUM_DELETADO;
+        if(musicaModel.isEmpty()){
+            repository.delete(model);
+
+            return ALBUM_DELETADO;
+        }
+
+        return ERRO_ALBUM_DELETADO;
 
     }
 

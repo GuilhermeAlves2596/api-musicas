@@ -1,11 +1,8 @@
 package com.api_musicas.controller;
 
-import com.api_musicas.domain.AlbumDTO;
-import com.api_musicas.domain.ArtistaDTO;
+import com.api_musicas.domain.dto.AlbumDTO;
 import com.api_musicas.model.AlbumModel;
-import com.api_musicas.model.ArtistaModel;
 import com.api_musicas.service.AlbumService;
-import com.api_musicas.service.ArtistaService;
 import lombok.Data;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
