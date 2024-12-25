@@ -18,4 +18,11 @@ public class Constantes {
     public static String ALBUM_DELETADO = "Album excluido com sucesso.";
     public static String ALBUM_N_ENCONTRADO = "Album não encontrado";
 
+    //Musica
+    public static String MUSICA_CADASTRADA = "Musica cadastrada com sucesso.";
+    public static String ERRO_MUSICA_CADASTRADO = "Erro: Campo ano não pode ser superior ao ano atual.";
+    public static String MUSICA_ATUALIZADA = "Musica atualizada com sucesso.";
+    public static String MUSICA_DELETADA = "Musica excluida com sucesso.";
+    public static String MUSICA_N_ENCONTRADA = "Musica não encontrada";
+
 }

@@ -23,5 +23,6 @@ public class AlbumDTO {
 
     private String imagemCapa;
 
+    @NotNull(message = "Informe o artista do album.")
     private ArtistaModel artista;
 }
