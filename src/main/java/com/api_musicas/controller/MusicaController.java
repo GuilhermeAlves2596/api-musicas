@@ -5,6 +5,7 @@ import com.api_musicas.domain.MusicasArtistaDTO;
 import com.api_musicas.model.MusicaModel;
 import com.api_musicas.service.MusicaService;
 import lombok.Data;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
@@ -16,10 +17,9 @@ import javax.validation.Valid;
 
 @RestController
 @RequestMapping("/musica")
-@Data
 public class MusicaController {
-
-    private final MusicaService service;
+    @Autowired
+    private MusicaService service;
 
     @PostMapping(value = "/salvar")
     public ResponseEntity<String> salvarMusica(@RequestBody @Valid MusicaModel musicaModel)  {
@@ -62,7 +62,7 @@ public class MusicaController {
     }
 
     @GetMapping("/artista/{artistaId}")
-    public ResponseEntity<MusicasArtistaDTO> getMusicasByArtista(@PathVariable Long artistaId) {
+    public ResponseEntity<MusicasArtistaDTO> listarMusicasPorArtista(@PathVariable Long artistaId) {
         MusicasArtistaDTO dto = service.musicasPorArtista(artistaId);
         return ResponseEntity.ok(dto);
     }

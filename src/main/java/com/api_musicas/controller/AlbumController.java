@@ -4,6 +4,7 @@ import com.api_musicas.domain.AlbumDTO;
 import com.api_musicas.model.AlbumModel;
 import com.api_musicas.service.AlbumService;
 import lombok.Data;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
@@ -18,10 +19,9 @@ import java.io.IOException;
 
 @RestController
 @RequestMapping("/album")
-@Data
 public class AlbumController {
-
-    private final AlbumService service;
+    @Autowired
+    private AlbumService service;
 
     @PostMapping(value = "/salvar")
     public ResponseEntity<String> salvarAlbum(@RequestBody @Valid AlbumDTO albumDTO)  {

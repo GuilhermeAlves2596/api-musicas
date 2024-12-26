@@ -41,7 +41,10 @@ class MusicasArtistaDTOTest {
     @Test
     void musicaArtistaDtoBuilderTest(){
         MusicasArtistaDTO artistaDTO = MusicasArtistaDTO.builder()
-                        .nomeArtista("teste").build();
+                        .nomeArtista("teste")
+                        .nacionalidade("teste")
+                        .site("teste")
+                        .imagemPerfil("teste").musica(new ArrayList<>()).build();
 
         assertEquals("teste", artistaDTO.getNomeArtista());
 

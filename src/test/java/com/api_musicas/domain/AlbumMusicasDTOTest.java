@@ -39,7 +39,8 @@ class AlbumMusicasDTOTest {
     @Test
     void albumMusicasBuilderTest(){
         AlbumMusicasDTO albumMusicasDTO = AlbumMusicasDTO.builder()
-                .nomeAlbum("teste").build();
+                .nomeAlbum("teste")
+                .musicas(new ArrayList<>()).build();
 
         assertEquals("teste", albumMusicasDTO.getNomeAlbum());
     }

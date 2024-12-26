@@ -4,6 +4,7 @@ import com.api_musicas.domain.ArtistaDTO;
 import com.api_musicas.model.ArtistaModel;
 import com.api_musicas.service.ArtistaService;
 import lombok.Data;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
@@ -18,10 +19,9 @@ import java.io.IOException;
 
 @RestController
 @RequestMapping("/artista")
-@Data
 public class ArtistaController {
-
-    private final ArtistaService service;
+    @Autowired
+    private ArtistaService service;
 
     @PostMapping(value = "/salvar")
     public ResponseEntity<String> salvarArtista(@RequestBody @Valid ArtistaDTO artistaDTO)  {

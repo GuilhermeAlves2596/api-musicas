@@ -90,7 +90,7 @@ class AlbumServiceTest {
     @Test
     void saveImagemExceptionTest() {
 
-        when(repository.findById(anyLong())).thenThrow(new RuntimeException(ALBUM_N_ENCONTRADO));
+        when(repository.findById(anyLong())).thenReturn(Optional.empty());
 
         RuntimeException exception = assertThrows(RuntimeException.class, () -> {
             service.saveImagem(1L, new MockMultipartFile("teste", "teste".getBytes()));
@@ -108,8 +108,9 @@ class AlbumServiceTest {
     }
 
     @Test
-    void buscarAlbumExceptionTest(){
-        when(repository.findById(anyLong())).thenThrow(new RuntimeException(ALBUM_N_ENCONTRADO));
+    void buscarAlbumExceptionTest() {
+
+        when(repository.findById(anyLong())).thenReturn(Optional.empty());
 
         RuntimeException exception = assertThrows(RuntimeException.class, () -> {
             service.buscarAlbum(1L);
@@ -157,7 +158,7 @@ class AlbumServiceTest {
 
     @Test
     void updateExceptionTest(){
-        when(repository.findById(anyLong())).thenThrow(new RuntimeException(ALBUM_N_ENCONTRADO));
+        when(repository.findById(anyLong())).thenReturn(Optional.empty());
 
         RuntimeException exception = assertThrows(RuntimeException.class, () -> {
             service.update(1L, new AlbumDTO("teste", 3000, "teste", new ArtistaModel()));
@@ -173,6 +174,17 @@ class AlbumServiceTest {
 
         String resultado = service.delete(1L);
         assertEquals(ALBUM_DELETADO, resultado);
+    }
+
+    @Test
+    void deleteExceptionTest(){
+        when(repository.findById(anyLong())).thenReturn(Optional.empty());
+
+        RuntimeException exception = assertThrows(RuntimeException.class, () -> {
+            service.delete(1L);
+        });
+
+        assertEquals(ALBUM_N_ENCONTRADO, exception.getMessage());
     }
 
     @Test

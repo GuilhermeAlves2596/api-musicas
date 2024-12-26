@@ -39,8 +39,12 @@ class MusicaDTOTest {
     @Test
     void musicaDtoBuilderTest(){
         MusicaDTO musicaDTO = MusicaDTO.builder()
-                        .tituloMusica("teste").build();
-
+                        .tituloMusica("teste")
+                        .minutos(2)
+                        .segundos(25)
+                        .numeroFaixa(1)
+                        .album(albumDTO).build();
+        
         assertEquals("teste", musicaDTO.getTituloMusica());
 
     }

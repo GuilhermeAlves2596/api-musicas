@@ -71,7 +71,7 @@ class ArtistaServiceTest {
     @Test
     void saveImagemExceptionTest() {
 
-        when(repository.findById(anyLong())).thenThrow(new RuntimeException(ARTISTA_N_ENCONTRADO));
+        when(repository.findById(anyLong())).thenReturn(Optional.empty());
 
         RuntimeException exception = assertThrows(RuntimeException.class, () -> {
             service.saveImagem(1L, new MockMultipartFile("teste", "teste".getBytes()));
@@ -90,7 +90,7 @@ class ArtistaServiceTest {
 
     @Test
     void buscarArtistaExceptionTest(){
-        when(repository.findById(anyLong())).thenThrow(new RuntimeException(ARTISTA_N_ENCONTRADO));
+        when(repository.findById(anyLong())).thenReturn(Optional.empty());
 
         RuntimeException exception = assertThrows(RuntimeException.class, () -> {
             service.buscarArtista(1L);
@@ -106,9 +106,9 @@ class ArtistaServiceTest {
         artistaModelList.add(artistaModel);
 
         Pageable pageable = PageRequest.of(0, 2);
-        Page<ArtistaModel> albumPage = new PageImpl<>(artistaModelList, pageable, artistaModelList.size());
+        Page<ArtistaModel> artistaPage = new PageImpl<>(artistaModelList, pageable, artistaModelList.size());
 
-        when(repository.findAll(pageable)).thenReturn(albumPage);
+        when(repository.findAll(pageable)).thenReturn(artistaPage);
 
         Page<ArtistaModel> resultado = service.artistas(pageable);
 
@@ -129,7 +129,7 @@ class ArtistaServiceTest {
 
     @Test
     void updateExceptionTest(){
-        when(repository.findById(anyLong())).thenThrow(new RuntimeException(ARTISTA_N_ENCONTRADO));
+        when(repository.findById(anyLong())).thenReturn(Optional.empty());
 
         RuntimeException exception = assertThrows(RuntimeException.class, () -> {
             service.update(1L, artistaDTO);
@@ -145,6 +145,17 @@ class ArtistaServiceTest {
 
         String resultado = service.delete(1L);
         assertEquals(ARTISTA_DELETADO, resultado);
+    }
+
+    @Test
+    void deleteExeptionTest(){
+        when(repository.findById(anyLong())).thenReturn(Optional.empty());
+
+        RuntimeException exception = assertThrows(RuntimeException.class, () -> {
+            service.delete(1L);
+        });
+
+        assertEquals(ARTISTA_N_ENCONTRADO, exception.getMessage());
     }
 
     @Test

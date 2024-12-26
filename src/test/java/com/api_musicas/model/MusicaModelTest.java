@@ -40,7 +40,12 @@ class MusicaModelTest {
     @Test
     void musicaModelBuilderTest(){
         MusicaModel musicaModel = MusicaModel.builder()
-                .titulo("teste").build();
+                .id(1L)
+                .titulo("teste")
+                .minutos(2)
+                .segundos(25)
+                .numeroFaixa(1)
+                .album(new AlbumModel()).build();
 
         assertEquals("teste", musicaModel.getTitulo());
 
