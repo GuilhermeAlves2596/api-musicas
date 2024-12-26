@@ -1,4 +1,4 @@
-package com.api_musicas.domain.dto;
+package com.api_musicas.domain;
 
 import com.fasterxml.jackson.annotation.JsonInclude;
 import lombok.AllArgsConstructor;
@@ -12,6 +12,7 @@ import lombok.NoArgsConstructor;
 @Builder
 @JsonInclude(JsonInclude.Include.NON_NULL)
 public class MusicaDTO {
+
     private String tituloMusica;
 
     private Integer minutos;

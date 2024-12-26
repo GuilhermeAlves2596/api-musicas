@@ -1,4 +1,4 @@
-package com.api_musicas.domain.dto;
+package com.api_musicas.domain;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;

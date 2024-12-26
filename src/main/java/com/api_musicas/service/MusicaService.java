@@ -1,9 +1,9 @@
 package com.api_musicas.service;
 
-import com.api_musicas.domain.dto.AlbumDTO;
-import com.api_musicas.domain.dto.AlbumMusicasDTO;
-import com.api_musicas.domain.dto.MusicaDTO;
-import com.api_musicas.domain.dto.MusicasArtistaDTO;
+import com.api_musicas.domain.AlbumDTO;
+import com.api_musicas.domain.AlbumMusicasDTO;
+import com.api_musicas.domain.MusicaDTO;
+import com.api_musicas.domain.MusicasArtistaDTO;
 import com.api_musicas.model.AlbumModel;
 import com.api_musicas.model.ArtistaModel;
 import com.api_musicas.model.MusicaModel;

@@ -1,6 +1,6 @@
 package com.api_musicas.controller;
 
-import com.api_musicas.domain.dto.ArtistaDTO;
+import com.api_musicas.domain.ArtistaDTO;
 import com.api_musicas.model.ArtistaModel;
 import com.api_musicas.service.ArtistaService;
 import lombok.Data;

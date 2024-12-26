@@ -1,6 +1,6 @@
 package com.api_musicas.service;
 
-import com.api_musicas.domain.dto.ArtistaDTO;
+import com.api_musicas.domain.ArtistaDTO;
 import com.api_musicas.mapper.ArtistaMapper;
 import com.api_musicas.model.AlbumModel;
 import com.api_musicas.model.ArtistaModel;

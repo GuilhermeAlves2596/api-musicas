@@ -1,4 +1,4 @@
-package com.api_musicas.domain.dto;
+package com.api_musicas.domain;
 
 import com.api_musicas.model.ArtistaModel;
 import com.fasterxml.jackson.annotation.JsonInclude;
