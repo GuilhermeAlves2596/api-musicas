@@ -9,4 +9,4 @@ VOLUME /tmp
 
 COPY target/Musicas-0.0.1-SNAPSHOT.jar app.jar
 
-ENTRYPOINT ["/wait-for-it.sh", "musicabd:3306", "--timeout=60", "--", "java", "-jar", "/app.jar"]
+ENTRYPOINT ["/wait-for-it.sh", "musicabd:3306", "--timeout=120", "--", "java", "-jar", "/app.jar"]
