@@ -119,6 +119,22 @@ class ArtistaServiceTest {
     }
 
     @Test
+    void artistasErroTest(){
+        List<ArtistaModel> artistaModelList = new ArrayList<>();
+
+        Pageable pageable = PageRequest.of(0, 2);
+        Page<ArtistaModel> artistaPage = new PageImpl<>(artistaModelList, pageable, 0);
+
+        when(repository.findAll(pageable)).thenReturn(artistaPage);
+
+        RuntimeException exception = assertThrows(RuntimeException.class, () -> {
+            service.artistas(pageable);
+        });
+
+        assertEquals(ERRO_LISTAR_ARTISTAS, exception.getMessage());
+    }
+
+    @Test
     void updateTest(){
         when(repository.findById(anyLong())).thenReturn(Optional.of(artistaModel));
 

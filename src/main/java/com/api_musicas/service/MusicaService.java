@@ -47,7 +47,13 @@ public class MusicaService {
     }
 
     public Page<MusicaModel> musicas(Pageable pageable){
-        return repository.findAll(pageable);
+        Page<MusicaModel> musicas = repository.findAll(pageable);
+
+        if(musicas.isEmpty()){
+            throw new RuntimeException(ERRO_LISTAR_MUSICAS);
+        }
+
+        return musicas;
     }
 
     public String update(Long id, MusicaModel musica){

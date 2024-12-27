@@ -65,7 +65,12 @@ public class AlbumService {
     }
 
     public Page<AlbumModel> albuns(Pageable pageable){
-        return repository.findAll(pageable);
+        Page<AlbumModel> albuns = repository.findAll(pageable);
+
+        if(albuns.isEmpty()){
+            throw new RuntimeException(ERRO_LISTAR_ALBUNS);
+        }
+        return albuns;
     }
 
     public String update(Long id, AlbumDTO album){

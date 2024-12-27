@@ -103,6 +103,22 @@ class MusicaServiceTest {
     }
 
     @Test
+    void musicasErroTest(){
+        List<MusicaModel> musicaModelList = new ArrayList<>();
+
+        Pageable pageable = PageRequest.of(0, 2);
+        Page<MusicaModel> musicaPage = new PageImpl<>(musicaModelList, pageable, 0);
+
+        when(repository.findAll(pageable)).thenReturn(musicaPage);
+
+        RuntimeException exception = assertThrows(RuntimeException.class, () -> {
+            service.musicas(pageable);
+        });
+
+        assertEquals(ERRO_LISTAR_MUSICAS, exception.getMessage());
+    }
+
+    @Test
     void updateTest(){
         when(repository.findById(anyLong())).thenReturn(Optional.of(musicaModel));
 

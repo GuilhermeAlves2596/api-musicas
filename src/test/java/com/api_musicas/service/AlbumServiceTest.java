@@ -141,6 +141,22 @@ class AlbumServiceTest {
     }
 
     @Test
+    void albunsErroTest(){
+        List<AlbumModel> albumList = new ArrayList<>();
+
+        Pageable pageable = PageRequest.of(0, 2);
+        Page<AlbumModel> albumPage = new PageImpl<>(albumList, pageable, 0);
+
+        when(repository.findAll(pageable)).thenReturn(albumPage);
+
+        RuntimeException exception = assertThrows(RuntimeException.class, () -> {
+            service.albuns(pageable);
+        });
+
+        assertEquals(ERRO_LISTAR_ALBUNS, exception.getMessage());
+    }
+
+    @Test
     void updateTest(){
         when(repository.findById(anyLong())).thenReturn(Optional.of(albumModel));
 

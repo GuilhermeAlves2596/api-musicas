@@ -58,7 +58,12 @@ public class ArtistaService {
     }
 
     public Page<ArtistaModel> artistas(Pageable pageable){
-        return repository.findAll(pageable);
+        Page<ArtistaModel> artistas = repository.findAll(pageable);
+
+        if(artistas.isEmpty()){
+            throw new RuntimeException(ERRO_LISTAR_ARTISTAS);
+        }
+        return artistas;
     }
 
     public String update(Long id, ArtistaDTO artista){
